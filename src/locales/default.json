@@ -4,8 +4,10 @@
   "createSpace": "Create space",
   "backToHome": "Home",
   "actions": "Actions",
+  "poweredBy": "Powered by",
   "results": "Results",
   "resultsError": "Results could not be calculated. This is often due to a misconfigured strategy or an unresponsive RPC node involved in the strategy.",
+  "resultsCalculating": "Final results are being calculated. If you still see this message after a few minutes contact the space admin.",
   "vpError": "Your voting power could not be calculated. This is often due to a misconfigured strategy or an unresponsive RPC node involved in the strategy.",
   "getHelp": "Get help",
   "retry": "Retry",
@@ -15,6 +17,7 @@
   "save": "Save",
   "author": "Author",
   "next": "Next",
+  "choice": "Choice",
   "submit": "Submit",
   "plugins": "Plugins",
   "information": "Information",
@@ -25,7 +28,7 @@
   "space": "Space",
   "spaces": "Spaces",
   "verifiedSpace": "Verified space",
-  "warningSpace": "This is not an official space, proceed with caution!",
+  "warningSpace": "This space has been flagged as potentially malicious. Proceed with caution.",
   "version": "Version",
   "timeline": "Timeline",
   "ended": "ended",
@@ -54,19 +57,22 @@
   "license": "License",
   "showMore": "Show more",
   "voted": "Voted",
+  "reload": "Reload",
   "ipfsServer": "IPFS server",
   "hub": "Hub",
   "cancel": "Cancel",
-  "deleteProposal": "Delete proposal",
+  "delete": "Delete",
   "demoSite": "This is the demo site, give it a try!",
   "removeDelegation": "Remove delegation",
   "confirmRemove": "Are you sure you want to remove your delegation to",
   "removeSpace": "for the space {0}",
-  "confirmVote": "Confirm vote",
-  "voteOverview": "Vote overview",
+  "noVotingPower": "Oops, it seems you don't have any voting power at block {blockNumber}.",
   "quorumReached": "quorum reached",
   "options": "Option(s)",
   "votingPower": "Your voting power",
+  "comment": {
+    "placeholder": "Share your reason (optional)"
+  },
   "receipt": "Receipt",
   "relayer": "Relayer",
   "verifyOnMycrypto": "Verify receipt on MyCrypto",
@@ -117,7 +123,6 @@
   "language": "Language",
   "agree": "I agree",
   "moderators": "Moderators",
-  "mustAgreeToTerms": "Before you can complete this action, you must agree to {0} terms of service here:",
   "playground": "Playground",
   "strategyParams": "Strategy params",
   "addresses": "Addresses",
@@ -129,7 +134,7 @@
   "subspaces": "Sub-spaces",
   "mainspace": "Main space",
   "copyLink": "Copy link",
-  "duplicateProposal": "Duplicate proposal",
+  "duplicate": "Duplicate",
   "joinedSpaces": "Joined spaces",
   "joinSpaces": "Join spaces",
   "setDelegationToSpace": "Limit delegation to a specific space",
@@ -140,6 +145,7 @@
   "or": "or",
   "share": "Share",
   "shareOnTwitter": "Share on Twitter",
+  "shareOnLenster": "Share on Lenster",
   "createButton": "Create",
   "discussion": "Discussion",
   "changeWallet": "Change wallet",
@@ -158,6 +164,7 @@
     "maxLength": "Maximum length is {0}",
     "pattern": "Invalid character",
     "minItems": "Minimum {0} item(s) required",
+    "maxItems": "Maximum {0} item(s) allowed",
     "minStrategy": "At least one strategy is required.",
     "website": "URL should be in the format https://www.example.com",
     "format": "Invalid format",
@@ -193,6 +200,7 @@
     "delayEnforced": "The space enforces a delay until voting can start",
     "periodEnforced": "The space enforces the duration of the voting period",
     "typeEnforced": "{type} is enforced by the space",
+    "privacyEnforced": "{type} is enforced by the space",
     "edit": "Edit",
     "continue": "Continue",
     "now": "Now",
@@ -234,6 +242,8 @@
     "startDate": "Start date",
     "endDate": "End date",
     "votingSystem": "Voting system",
+    "privacy": "Privacy",
+    "invalidChoice": "Invalid choice",
     "postVoteModal": {
       "defaultTitle": "Your vote is in!",
       "gnosisSafeTitle": "Your vote is pending...",
@@ -269,6 +279,12 @@
     "all": "All",
     "unread": "Unread"
   },
+  "modalTerms": {
+    "mustAgreeTo": "To {action} this space, you must agree to the {spaceName} terms of service.",
+    "actionJoin": "join",
+    "actionCreate": "create a proposal in",
+    "actionVote": "vote in"
+  },
   "settings": {
     "header": "Settings",
     "editController": "Edit controller",
@@ -292,7 +308,7 @@
       "select": "Select categorie(s)"
     },
     "terms": {
-      "label": "Terms",
+      "label": "Terms of service",
       "information": "Users will be required to accept these terms once before they can create a proposal or cast a vote"
     },
     "hideSpace": "Hide space from homepage",
@@ -525,6 +541,19 @@
       "ranked-choice": "Each voter may select and rank any number of choices. Results are calculated by instant-runoff counting method.",
       "weighted": "Each voter may spread voting power across any number of choices.",
       "basic": "Single choice voting with three choices: For, Against or Abstain"
+    }
+  },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Select voting privacy",
+    "information": "The type of privacy used on proposals, setting it here will enforce the same privacy on all proposals.",
+    "any": "Any",
+    "none": "None",
+    "shutter": {
+      "label": "Shutter",
+      "description": "Choices are encrypted and only visible once the voting period is over",
+      "tooltip": "This proposal has Shutter privacy enabled. All votes will be encrypted until the voting period has ended and the final score is calculated",
+      "url": "https://blog.shutter.network/announcing-shutter-governance-shielded-voting-for-daos/"
     }
   },
   "safeSnap": {

@@ -4,6 +4,7 @@
   "createSpace": "スペースを作成する",
   "backToHome": "ホーム",
   "actions": "アクション",
+  "poweredBy": "Powered by",
   "results": "投票結果",
   "resultsError": "結果を計算できませんでした。戦略が誤って設定されていたり、または戦略に対してRPCノードが無反応であることが原因かもしれません。",
   "vpError": "投票力を計算できませんでした。ストラテジーの誤設定や、ストラテジーに関係するRPCノードが無反応であることが原因かもしれません。",
@@ -25,7 +26,7 @@
   "space": "スペース",
   "spaces": "スペース",
   "verifiedSpace": "認証済みのスペース",
-  "warningSpace": "This is not an official space, proceed with caution!",
+  "warningSpace": "This space has been flagged as potentially malicious. Proceed with caution.",
   "version": "バージョン",
   "timeline": "タイムライン",
   "ended": "が終了しました。",
@@ -63,10 +64,12 @@
   "confirmRemove": "以下のアドレスへの投票権の委任を削除してもよろしいですか？",
   "removeSpace": "for the space {0}",
   "confirmVote": "投票内容の確認",
-  "voteOverview": "Vote overview",
   "quorumReached": "quorum reached",
   "options": "オプション",
   "votingPower": "あなたの投票力",
+  "comment": {
+    "placeholder": "Share your reason (optional)"
+  },
   "receipt": "レシート",
   "relayer": "リレーヤー",
   "verifyOnMycrypto": "MyCryptoでレシートを検証する",
@@ -193,6 +196,7 @@
     "delayEnforced": "スペースは投票が開始されるまで遅延を強制する",
     "periodEnforced": "スペースは投票期間を強制します",
     "typeEnforced": "{type} is enforced by the space",
+    "privacyEnforced": "{type} is enforced by the space",
     "edit": "編集",
     "continue": "続行する",
     "now": "今すぐ",
@@ -234,6 +238,8 @@
     "startDate": "開始日",
     "endDate": "終了日",
     "votingSystem": "投票のシステム",
+    "privacy": "Privacy",
+    "invalidChoice": "Invalid choice",
     "postVoteModal": {
       "defaultTitle": "Your vote is in!",
       "gnosisSafeTitle": "Your vote is pending...",
@@ -527,6 +533,19 @@
       "basic": "3つの選択肢（賛成または 反対または棄権）の中から一つを選択する投票"
     }
   },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Select voting privacy",
+    "information": "The type of privacy used on proposals, setting it here will enforce the same privacy on all proposals.",
+    "any": "Any",
+    "none": "None",
+    "shutter": {
+      "label": "Shutter",
+      "description": "Choices are encrypted and only visible once the voting period is over",
+      "tooltip": "This proposal has Shutter privacy enabled. All votes will be encrypted until the voting period has ended and the final score is calculated",
+      "url": "https://blog.shutter.network/announcing-shutter-governance-shielded-voting-for-daos/"
+    }
+  },
   "safeSnap": {
     "currentOutcome": "現在の結果",
     "currentBond": "Current bond",
@@ -588,6 +607,24 @@
     "button_show": "コレクションを閲覧する",
     "success_claim": "POAP があなたのコレクションに追加されました",
     "error_claim": "トークンを発行する際に問題が発生しました。"
+  },
+  "progress": {
+    "progress": "Progress",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "complete": "Complete",
+    "newStep": "New Step",
+    "description": "Description",
+    "add": "Add",
+    "deleteStep": "Delete Step",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "comeBack": "Come back after voting is complete to see how this proposal is progressing!",
+    "confirmSignature": "Signing this message will allow us to authorize your request to update the progress of your proposal.",
+    "wentWrong": "Oops something went wrong.",
+    "voting": "Voting",
+    "soon": "Soon"
   },
   "charts": {
     "charts": "チャート",

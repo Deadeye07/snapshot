@@ -23,9 +23,7 @@ export function useClient() {
       connectorName.value === 'gnosis'
   );
 
-  const usePersonalSign = computed(
-    () => connectorName.value === 'walletlink' || isGnosisSafe.value
-  );
+  const usePersonalSign = computed(() => isGnosisSafe.value);
 
   async function send(space, type, payload) {
     isSending.value = true;
@@ -80,7 +78,9 @@ export function useClient() {
         proposal: payload.proposal.id,
         type: payload.proposal.type,
         choice: payload.choice,
-        app: 'snapshot'
+        privacy: payload.privacy,
+        app: 'snapshot',
+        reason: payload.reason
       });
     } else if (type === 'delete-proposal') {
       return clientEIP712.cancelProposal(auth.web3, web3.value.account, {

@@ -21,11 +21,17 @@ const choices = computed<{ i: number; choice: string }[]>(() =>
     .map((choice, i) => ({ i, choice }))
     .sort((a, b) => props.results.scores[b.i] - props.results.scores[a.i])
 );
+
+const showQuorum = computed(
+  () =>
+    props.proposal.privacy !== 'shutter' ||
+    props.proposal.scores_state === 'final'
+);
 </script>
 
 <template>
   <div class="space-y-3">
-    <ProposalResultsListItem
+    <SpaceProposalResultsListItem
       v-for="choice in choices"
       :key="choice.i"
       :choice="choice"
@@ -34,7 +40,8 @@ const choices = computed<{ i: number; choice: string }[]>(() =>
       :results="results"
       :strategies="strategies"
     />
-    <ProposalResultsQuorum
+    <SpaceProposalResultsQuorum
+      v-if="showQuorum"
       :space="space"
       :proposal="proposal"
       :results="results"

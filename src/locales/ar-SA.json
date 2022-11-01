@@ -4,6 +4,7 @@
   "createSpace": "إنشاء مساحة",
   "backToHome": "الصفحه الرئيسيه",
   "actions": "الإجراءات",
+  "poweredBy": "Powered by",
   "results": "النتائج",
   "resultsError": "Results could not be calculated. This is often due to a misconfigured strategy or an unresponsive RPC node involved in the strategy.",
   "vpError": "Your voting power could not be calculated. This is often due to a misconfigured strategy or an unresponsive RPC node involved in the strategy.",
@@ -25,7 +26,7 @@
   "space": "المساحة",
   "spaces": "المساحات",
   "verifiedSpace": "Verified space",
-  "warningSpace": "This is not an official space, proceed with caution!",
+  "warningSpace": "This space has been flagged as potentially malicious. Proceed with caution.",
   "version": "الاصدار",
   "timeline": "الجدول الزمني",
   "ended": "ended",
@@ -63,10 +64,12 @@
   "confirmRemove": "هل انت متأكد من رغبتك بالغاء التفويض",
   "removeSpace": "للمساحة {0}",
   "confirmVote": "تأكيد التصويت",
-  "voteOverview": "Vote overview",
   "quorumReached": "quorum reached",
   "options": "خيار(ات)",
   "votingPower": "قوة التصويت الخاصة بك",
+  "comment": {
+    "placeholder": "Share your reason (optional)"
+  },
   "receipt": "الإيصال",
   "relayer": "المرحّل",
   "verifyOnMycrypto": "تحقق من الإيصال على MyCrypto",
@@ -193,6 +196,7 @@
     "delayEnforced": "The space enforces a delay until voting can start",
     "periodEnforced": "The space enforces the duration of the voting period",
     "typeEnforced": "{type} is enforced by the space",
+    "privacyEnforced": "{type} is enforced by the space",
     "edit": "Edit",
     "continue": "Continue",
     "now": "Now",
@@ -234,6 +238,8 @@
     "startDate": "تاريخ البدء",
     "endDate": "تاريخ الانتهاء",
     "votingSystem": "نظام التصويت",
+    "privacy": "Privacy",
+    "invalidChoice": "Invalid choice",
     "postVoteModal": {
       "defaultTitle": "Your vote is in!",
       "gnosisSafeTitle": "Your vote is pending...",
@@ -527,6 +533,19 @@
       "basic": "التصويت بخيار واحد من ثلاثة خيارات: مع،ضد أو الامتناع عن التصويت"
     }
   },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Select voting privacy",
+    "information": "The type of privacy used on proposals, setting it here will enforce the same privacy on all proposals.",
+    "any": "Any",
+    "none": "None",
+    "shutter": {
+      "label": "Shutter",
+      "description": "Choices are encrypted and only visible once the voting period is over",
+      "tooltip": "This proposal has Shutter privacy enabled. All votes will be encrypted until the voting period has ended and the final score is calculated",
+      "url": "https://blog.shutter.network/announcing-shutter-governance-shielded-voting-for-daos/"
+    }
+  },
   "safeSnap": {
     "currentOutcome": "النتيجة الحالية",
     "currentBond": "السندات الحالية",
@@ -588,6 +607,24 @@
     "button_show": "تصفح المجموعة",
     "success_claim": "تم سك العملة POAP إلى مجموعتك",
     "error_claim": "حدثت مشكلة في سك العملة الرمزية"
+  },
+  "progress": {
+    "progress": "Progress",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "complete": "Complete",
+    "newStep": "New Step",
+    "description": "Description",
+    "add": "Add",
+    "deleteStep": "Delete Step",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "comeBack": "Come back after voting is complete to see how this proposal is progressing!",
+    "confirmSignature": "Signing this message will allow us to authorize your request to update the progress of your proposal.",
+    "wentWrong": "Oops something went wrong.",
+    "voting": "Voting",
+    "soon": "Soon"
   },
   "charts": {
     "charts": "الرسوم البيانية",

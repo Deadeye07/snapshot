@@ -578,10 +578,10 @@
   dependencies:
     "@floating-ui/core" "^1.0.0"
 
-"@gnosis.pm/safe-apps-provider@^0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/safe-apps-provider/-/safe-apps-provider-0.13.2.tgz#b4963c51e2ae5e86198c7ca42248ab4d97355919"
-  integrity sha512-n/sd6Nq7Kg1ZRSB4zMy7lFV+5R5ZXFKd2ZtvIq0cBvkTM9K2sDNhqTE1Em2uy0hM5wKdWlTfJtwh6YkWVhoXDg==
+"@gnosis.pm/safe-apps-provider@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/safe-apps-provider/-/safe-apps-provider-0.14.0.tgz#52783800f1da5f1b633a42dcf8c8797e7fe31d99"
+  integrity sha512-qOkPUfIu9dLoy4Muo40xzswqix7ZoJDmtEl35D+oYYa6JDw8cr4tVkPPjl6eDPNtMLiqGjs1POzHdZrfC8aHVw==
   dependencies:
     "@gnosis.pm/safe-apps-sdk" "7.8.0"
     events "^3.3.0"
@@ -812,6 +812,13 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@shutter-network/shutter-crypto@0.1.0-beta.3":
+  version "0.1.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shutter-network/shutter-crypto/-/shutter-crypto-0.1.0-beta.3.tgz#0ec7a3beab87aed15363349d240dfdff8d462012"
+  integrity sha512-kX9gOODp/4HqRubM7Hx4bb36yuVxIB/FOb4CfhB3gGWO5H2u7i0EnvrdJzsYXtDSrELXv7ay5Ly9k6X2fAk1jA==
+  dependencies:
+    browser-or-node "^2.0.0"
+
 "@sideway/address@^4.1.3":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.4.tgz#03dccebc6ea47fdc226f7d3d1ad512955d4783f0"
@@ -829,13 +836,13 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@snapshot-labs/lock@^0.1.1011":
-  version "0.1.1011"
-  resolved "https://registry.yarnpkg.com/@snapshot-labs/lock/-/lock-0.1.1011.tgz#5f61fac7eae4e80a656e46ea6792d57b1c0ec61e"
-  integrity sha512-QZ9byU46Oh1/9TRYwlf9wSqkqYgS6P8tzCh7bCWRuwuQmugyL6X65W7DkAtFiycSwrh60EDkNZlDFeG75vSFbA==
+"@snapshot-labs/lock@^0.1.1012":
+  version "0.1.1012"
+  resolved "https://registry.yarnpkg.com/@snapshot-labs/lock/-/lock-0.1.1012.tgz#930a604e3512a765ad7734ecffa8cb5e6e80fc8a"
+  integrity sha512-o1s8RbvPYwJGCy6JfHq5M/gHbjQmV8Va/JHllLe0KHyVLo7f9BKR+TFpY6W9AkGB5BAqes4pvDHyA72ECfmU+A==
   dependencies:
     "@coinbase/wallet-sdk" "^3.4.0"
-    "@gnosis.pm/safe-apps-provider" "^0.13.2"
+    "@gnosis.pm/safe-apps-provider" "^0.14.0"
     "@gnosis.pm/safe-apps-sdk" "^7.8.0"
     "@portis/web3" "^4.0.6"
     "@toruslabs/torus-embed" "^1.12.1"
@@ -849,10 +856,10 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@snapshot-labs/snapshot.js@^0.4.31":
-  version "0.4.31"
-  resolved "https://registry.yarnpkg.com/@snapshot-labs/snapshot.js/-/snapshot.js-0.4.31.tgz#b9ac5a2805e4b76377f344a748d8631d60b362b2"
-  integrity sha512-lhejgMHHR0rPrEcH8XUufZc7zRM4wLcXEd2MBMEHvR3n5USSTEgrh1LwN5urjAISjKyMVdByU6H5Gz96G4Jxjw==
+"@snapshot-labs/snapshot.js@^0.4.46":
+  version "0.4.46"
+  resolved "https://registry.yarnpkg.com/@snapshot-labs/snapshot.js/-/snapshot.js-0.4.46.tgz#33d4e2e2212441ee9fee40b18cd1e7db587c7a4a"
+  integrity sha512-/1klfof9/mS5GGxgI+fh8mgGCdGeD9h4krFsjK/Y1YFTRvKPAIjoZW22PbVmHeXH1FWkoqc2vIh6mzQygKNq2Q==
   dependencies:
     "@ensdomains/eth-ens-namehash" "^2.0.15"
     "@ethersproject/abi" "^5.6.4"
@@ -1984,6 +1991,11 @@ brorand@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
+
+browser-or-node@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/browser-or-node/-/browser-or-node-2.0.0.tgz#808ea90282a670931cdc0ea98166538a50dd0d89"
+  integrity sha512-3Lrks/Okgof+/cRguUNG+qRXSeq79SO3hY4QrXJayJofwJwHiGC0qi99uDjsfTwULUFSr1OGVsBkdIkygKjTUA==
 
 browserify-aes@^1.0.6, browserify-aes@^1.2.0:
   version "1.2.0"
@@ -4560,6 +4572,11 @@ json-to-graphql-query@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/json-to-graphql-query/-/json-to-graphql-query-2.2.4.tgz#ada9cfdbb9bf38589fd2661e1588d1edd0a882cc"
   integrity sha512-vNvsOKDSlEqYCzejI1xHS9Hm738dSnG4Upy09LUGqyybZXSIIb7NydDphB/6WxW2EEVpPU4JeU/Yo63Nw9dEJg==
+
+jsonexport@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/jsonexport/-/jsonexport-3.2.0.tgz#e5b4905ea1f6c8f8e0f62e4ceb26e4a31f1c93a8"
+  integrity sha512-GbO9ugb0YTZatPd/hqCGR0FSwbr82H6OzG04yzdrG7XOe4QZ0jhQ+kOsB29zqkzoYJLmLxbbrFiuwbQu891XnQ==
 
 jsonfile@^4.0.0:
   version "4.0.0"

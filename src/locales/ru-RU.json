@@ -4,6 +4,7 @@
   "createSpace": "Создать сообщество",
   "backToHome": "Главная",
   "actions": "Действия",
+  "poweredBy": "Powered by",
   "results": "Результаты",
   "resultsError": "Не удалось подсчитать результаты. Часто это связано с неправильной конфигурацией стратегии или не отвечающим на запросы ноды RPC, задействованным в стратегии.",
   "vpError": "Не удалось рассчитать ваше право голоса. Часто это происходит из-за неправильно настроенной стратегии или не отвечающего на запросы ноды RPC, задействованной в стратегии.",
@@ -25,7 +26,7 @@
   "space": "Сообщество",
   "spaces": "Сообщества",
   "verifiedSpace": "Проверенное сообщество",
-  "warningSpace": "This is not an official space, proceed with caution!",
+  "warningSpace": "This space has been flagged as potentially malicious. Proceed with caution.",
   "version": "Версия",
   "timeline": "Хронология",
   "ended": "завершился",
@@ -63,10 +64,12 @@
   "confirmRemove": "Вы уверены, что хотите отменить свое делегирование в",
   "removeSpace": "для сообщества {0}",
   "confirmVote": "Подтвердите голосование",
-  "voteOverview": "Vote overview",
   "quorumReached": "quorum reached",
   "options": "Вариант(ы)",
   "votingPower": "Ваше право голоса",
+  "comment": {
+    "placeholder": "Share your reason (optional)"
+  },
   "receipt": "Квитанция",
   "relayer": "Передатчик",
   "verifyOnMycrypto": "Подтвердите получение на MyCrypto",
@@ -193,6 +196,7 @@
     "delayEnforced": "Сообщество вводит отсрочку до начала голосования",
     "periodEnforced": "Сообщество устанавливает продолжительность периода голосования",
     "typeEnforced": "{type} is enforced by the space",
+    "privacyEnforced": "{type} is enforced by the space",
     "edit": "Изменить",
     "continue": "Продолжить",
     "now": "Сейчас",
@@ -234,6 +238,8 @@
     "startDate": "Дата начала",
     "endDate": "Дата окончания",
     "votingSystem": "Система голосования",
+    "privacy": "Privacy",
+    "invalidChoice": "Invalid choice",
     "postVoteModal": {
       "defaultTitle": "Your vote is in!",
       "gnosisSafeTitle": "Your vote is pending...",
@@ -527,6 +533,19 @@
       "basic": "Голосование с одним вариантом выбора с тремя вариантами: За, Против или Воздержался"
     }
   },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Select voting privacy",
+    "information": "The type of privacy used on proposals, setting it here will enforce the same privacy on all proposals.",
+    "any": "Any",
+    "none": "None",
+    "shutter": {
+      "label": "Shutter",
+      "description": "Choices are encrypted and only visible once the voting period is over",
+      "tooltip": "This proposal has Shutter privacy enabled. All votes will be encrypted until the voting period has ended and the final score is calculated",
+      "url": "https://blog.shutter.network/announcing-shutter-governance-shielded-voting-for-daos/"
+    }
+  },
   "safeSnap": {
     "currentOutcome": "Текущий исход",
     "currentBond": "Текущая связь",
@@ -588,6 +607,24 @@
     "button_show": "Посмотреть коллекцию",
     "success_claim": "POAP добавлен в вашу коллекцию",
     "error_claim": "При создании токена возникла проблема"
+  },
+  "progress": {
+    "progress": "Progress",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "complete": "Complete",
+    "newStep": "New Step",
+    "description": "Description",
+    "add": "Add",
+    "deleteStep": "Delete Step",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "comeBack": "Come back after voting is complete to see how this proposal is progressing!",
+    "confirmSignature": "Signing this message will allow us to authorize your request to update the progress of your proposal.",
+    "wentWrong": "Oops something went wrong.",
+    "voting": "Voting",
+    "soon": "Soon"
   },
   "charts": {
     "charts": "Графики",

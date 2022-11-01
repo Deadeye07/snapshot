@@ -24,7 +24,8 @@ const EMPTY_SPACE_FORM = {
     hideAbstain: false,
     period: 0,
     quorum: 0,
-    type: ''
+    type: '',
+    privacy: ''
   },
   validation: BASIC_VALIDATION,
   name: '',
@@ -36,6 +37,7 @@ const EMPTY_SPACE_FORM = {
   website: '',
   twitter: '',
   github: '',
+  coingecko: '',
   parent: null,
   children: [],
   private: false,
@@ -73,6 +75,7 @@ export function useSpaceForm(context: 'setup' | 'settings') {
     formData.voting.period = formData.voting?.period || undefined;
     formData.voting.type = formData.voting?.type || undefined;
     formData.voting.quorum = formData.voting?.quorum || undefined;
+    formData.voting.privacy = formData.voting?.privacy || undefined;
     formData.children = formData.children.map(child => child.id) || [];
     formData.parent = formData.parent?.id || '';
 
