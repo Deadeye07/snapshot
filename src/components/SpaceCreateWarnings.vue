@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useIntl } from '@/composables/useIntl';
 import { ExtendedSpace } from '@/helpers/interfaces';
-import { useWeb3 } from '@/composables/useWeb3';
 
-defineProps<{
+import { useWeb3, useIntl, useGnosis, useSnapshot } from '@/composables';
+
+const props = defineProps<{
   space: ExtendedSpace;
   executingValidationFailed: boolean;
   passValidation: (string | boolean)[];
@@ -11,21 +11,38 @@ defineProps<{
 
 const { formatCompactNumber } = useIntl();
 const { web3, web3Account } = useWeb3();
+const { isGnosisAndNotSpaceNetwork } = useGnosis(props.space);
+const { errorFetchingSnapshot } = useSnapshot();
 </script>
 
 <template>
-  <div>
-    <!-- Shows when no wallet is connected and the space has any sort
-      of validation set -->
+  <div class="mb-4 space-y-2">
+    <MessageWarningGnosisNetwork
+      v-if="isGnosisAndNotSpaceNetwork"
+      :space="space"
+      action="create"
+      is-responsive
+    />
+
     <BaseMessageBlock
-      v-if="
+      v-else-if="errorFetchingSnapshot"
+      level="warning"
+      is-responsive
+    >
+      {{ $t('create.errorGettingSnapshot') }}
+      <BaseLink link="https://discord.snapshot.org/">
+        {{ $t('learnMore') }}
+      </BaseLink>
+    </BaseMessageBlock>
+
+    <BaseMessageBlock
+      v-else-if="
         !web3Account &&
         !web3.authLoading &&
         (space?.validation?.params.minScore ||
           space?.filters.minScore ||
           space?.filters.onlyMembers)
       "
-      class="mb-4"
       level="warning"
       is-responsive
     >
@@ -57,7 +74,6 @@ const { web3, web3Account } = useWeb3();
       v-else-if="executingValidationFailed"
       level="warning"
       :route-object="{ name: 'spaceAbout', params: { key: space.id } }"
-      class="mb-4"
       is-responsive
     >
       {{ $t('create.validationWarning.executionError') }}
@@ -67,7 +83,6 @@ const { web3, web3Account } = useWeb3();
     <BaseMessageBlock
       v-else-if="passValidation[0] === false"
       level="warning"
-      class="mb-4"
       is-responsive
     >
       <span v-if="passValidation[1] === 'basic'">

@@ -1,17 +1,30 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { getIpfsUrl } from '@/helpers/utils';
 
-const props = defineProps(['discussionLink']);
-const preview = ref(false);
+const props = defineProps<{
+  link: string;
+  title?: string;
+}>();
+const preview = ref<null | {
+  meta: {
+    title: string;
+    description: string;
+  };
+  links: {
+    icon: {
+      href: string;
+    }[];
+  };
+}>(null);
 
 onMounted(async () => {
-  await update(props.discussionLink);
+  await update(props.link);
 });
 
-async function update(val) {
+async function update(val: string) {
   try {
-    preview.value = false;
+    preview.value = null;
     new URL(val);
     const IFRAMELY_API_KEY = 'd155718c86be7d5305ccb6';
     const url = `https://cdn.iframe.ly/api/iframely?url=${encodeURI(
@@ -27,8 +40,8 @@ async function update(val) {
 
 <template>
   <div v-if="preview?.meta?.title">
-    <h3 class="mb-2" v-text="$t('discussion')" />
-    <BaseLink :link="getIpfsUrl(discussionLink)" hide-external-icon>
+    <div v-if="title" class="mb-2" v-text="title" />
+    <BaseLink :link="getIpfsUrl(link)" hide-external-icon>
       <div
         class="flex items-center rounded-xl border hover:cursor-pointer hover:border-skin-text"
       >
@@ -40,6 +53,7 @@ async function update(val) {
             <img
               v-else
               :src="preview.links.icon[0].href"
+              alt="logo"
               width="32"
               height="32"
               class="rounded bg-white"

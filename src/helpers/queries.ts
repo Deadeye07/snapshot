@@ -8,11 +8,12 @@ export const VOTES_QUERY = gql`
     $orderBy: String
     $orderDirection: OrderDirection
     $voter: String
+    $space: String
   ) {
     votes(
       first: $first
       skip: $skip
-      where: { proposal: $id, vp_gt: 0, voter: $voter }
+      where: { proposal: $id, vp_gt: 0, voter: $voter, space: $space }
       orderBy: $orderBy
       orderDirection: $orderDirection
     ) {
@@ -48,6 +49,10 @@ export const PROPOSAL_QUERY = gql`
       quorum
       symbol
       privacy
+      validation {
+        name
+        params
+      }
       strategies {
         name
         network
@@ -197,6 +202,8 @@ export const SPACES_QUERY = gql`
       categories
       plugins
       followersCount
+      template
+      guidelines
       parent {
         id
         name
@@ -229,6 +236,10 @@ export const SPACES_QUERY = gql`
         params
       }
       validation {
+        name
+        params
+      }
+      voteValidation {
         name
         params
       }

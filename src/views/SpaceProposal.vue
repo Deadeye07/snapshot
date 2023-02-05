@@ -17,7 +17,7 @@ const props = defineProps<{ space: ExtendedSpace }>();
 const route = useRoute();
 const router = useRouter();
 
-const { t, setPageTitle } = useI18n();
+const { setPageTitle } = useI18n();
 const { web3, web3Account } = useWeb3();
 
 const id: string = route.params.id as string;
@@ -59,7 +59,10 @@ async function loadProposal() {
   loadingProposal.value = true;
   proposal.value = await getProposal(id);
   // Redirect to 404 page if proposal doesn't belong to current space
-  if (!proposal.value || props.space.id !== proposal.value.space.id) {
+  if (
+    !proposal.value ||
+    props.space.id.toLowerCase() !== proposal.value.space.id.toLowerCase()
+  ) {
     router.push({ name: 'error-404' });
   }
   loadingProposal.value = false;
@@ -102,12 +105,17 @@ async function loadResults() {
   }
   loadedResults.value = true;
   const [userVotesRes, votesRes] = await Promise.all([
+    // Skip if user is not connected
+    web3Account.value
+      ? await getProposalVotes(id, {
+          first: 1,
+          voter: web3Account.value,
+          space: proposal.value.space.id
+        })
+      : [],
     await getProposalVotes(id, {
-      first: 1,
-      voter: web3Account.value
-    }),
-    await getProposalVotes(id, {
-      first: 10
+      first: 10,
+      space: proposal.value.space.id
     })
   ]);
   userVote.value = formatProposalVotes(userVotesRes)?.[0] || null;
@@ -177,11 +185,10 @@ onMounted(async () => {
         <LoadingPage v-else />
       </div>
       <div class="space-y-4">
-        <SpaceProposalDiscussionLink
-          v-if="proposal?.discussion"
-          class="px-3 md:px-0"
-          :discussion-link="proposal.discussion"
-        />
+        <div v-if="proposal?.discussion" class="px-3 md:px-0">
+          <h3 v-text="$t('discussion')" />
+          <BlockLink :link="proposal.discussion" />
+        </div>
         <SpaceProposalVote
           v-if="proposal?.state === 'active' && loadedVotes"
           v-model="selectedChoices"
@@ -244,7 +251,7 @@ onMounted(async () => {
     </template>
   </TheLayout>
   <teleport v-if="proposal" to="#modal">
-    <ModalConfirm
+    <ModalVote
       :open="modalOpen"
       :space="space"
       :proposal="proposal"

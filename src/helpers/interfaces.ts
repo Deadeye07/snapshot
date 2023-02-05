@@ -62,7 +62,11 @@ export interface ProfileActivity {
   type: string;
   title: string;
   space: { id: string; avatar: string };
-  vote?: { proposalId: string; choice: string; type: string };
+  vote?: {
+    proposalId: string;
+    choice: string;
+    type: string;
+  };
 }
 
 export interface TreasuryAsset {
@@ -108,7 +112,10 @@ export interface ExtendedSpace {
   filters: { minScore: number; onlyMembers: boolean };
   plugins: Record<string, any>;
   validation: SpaceValidation;
+  voteValidation: VoteValidation;
   treasuries: TreasuryAsset[];
+  template: string;
+  guidelines: string;
   voting: {
     delay: number | null;
     hideAbstain: boolean;
@@ -146,6 +153,7 @@ export interface Proposal {
   state: string;
   symbol: string;
   privacy: string;
+  validation: VoteValidation;
   discussion: string;
   quorum: number;
   scores: number[];
@@ -156,6 +164,11 @@ export interface Proposal {
   plugins: Record<string, any>;
   space: ExtendedSpace;
   strategies: SpaceStrategy[];
+}
+
+export interface VoteValidation {
+  name: string;
+  params: Record<string, any>;
 }
 
 export interface Results {
@@ -205,6 +218,22 @@ export interface RealityOracleProposal {
   currentBond: BigNumber | undefined;
   isApproved: boolean;
   endTime: number | undefined;
+}
+
+export interface UmaOracleProposal {
+  dao: string;
+  oracle: string;
+  rules: string;
+  expiration: number;
+  proposalId: string;
+  transactions: SafeTransaction[];
+  minimumBond: BigNumber | number | undefined;
+  explanation: string;
+  allowance: BigNumber | number | undefined;
+  collateral: string;
+  decimals: number;
+  symbol: string;
+  userBalance: BigNumber | number | undefined;
 }
 
 export interface SafeAsset {

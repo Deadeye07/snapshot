@@ -8,6 +8,7 @@ const { isSending } = useClient();
 const { isUploadingImage } = useImageUpload();
 
 const BASIC_VALIDATION = { name: 'basic', params: {} };
+const ANY_VOTE_VALIDATION = { name: 'any', params: {} };
 const EMPTY_SPACE_FORM = {
   strategies: [],
   categories: [],
@@ -28,6 +29,7 @@ const EMPTY_SPACE_FORM = {
     privacy: ''
   },
   validation: BASIC_VALIDATION,
+  voteValidation: ANY_VOTE_VALIDATION,
   name: '',
   about: '',
   avatar: '',
@@ -42,7 +44,9 @@ const EMPTY_SPACE_FORM = {
   children: [],
   private: false,
   domain: '',
-  skin: ''
+  skin: '',
+  guidelines: '',
+  template: ''
 };
 
 const formSetup = ref(clone(EMPTY_SPACE_FORM));
@@ -69,6 +73,7 @@ export function useSpaceForm(context: 'setup' | 'settings') {
     formData.strategies = formData.strategies || [];
     formData.plugins = formData.plugins || {};
     formData.validation = formData.validation || BASIC_VALIDATION;
+    formData.voteValidation = formData.voteValidation || ANY_VOTE_VALIDATION;
     formData.filters = formData.filters || {};
     formData.voting = formData.voting || {};
     formData.voting.delay = formData.voting?.delay || undefined;

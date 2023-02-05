@@ -17,7 +17,9 @@ import {
   useApp,
   useApolloQuery,
   useWeb3,
-  useClient
+  useClient,
+  useGnosis,
+  useSnapshot
 } from '@/composables';
 
 const BODY_LIMIT_CHARACTERS = 14400;
@@ -37,8 +39,12 @@ const { send, isSending } = useClient();
 const { pluginIndex } = usePlugins();
 const { modalAccountOpen } = useModal();
 const { modalTermsOpen, termsAccepted, acceptTerms } = useTerms(props.space.id);
+const { isGnosisAndNotSpaceNetwork } = useGnosis(props.space);
+const { isSnapshotLoading } = useSnapshot();
+
 const {
   form,
+  formDraft,
   userSelectedDateEnd,
   sourceProposalLoaded,
   sourceProposal,
@@ -192,17 +198,24 @@ async function loadSourceProposal() {
   sourceProposalLoaded.value = true;
 }
 
+const queries = computed(() => {
+  let q: { snapshot?: string; app?: string } = {};
+  if (route.query.snapshot) q.snapshot = route.query.snapshot as string;
+  if (route.query.app) q.app = route.query.app as string;
+  return q;
+});
+
 function nextStep() {
   router.push({
     params: { step: currentStep.value + 1 },
-    query: route.query.snapshot ? { snapshot: route.query.snapshot } : {}
+    query: queries.value
   });
 }
 
 function previosStep() {
   router.push({
     params: { step: currentStep.value - 1 },
-    query: route.query.snapshot ? { snapshot: route.query.snapshot } : {}
+    query: queries.value
   });
 }
 
@@ -248,13 +261,21 @@ watch(preview, () => {
 });
 
 onMounted(async () => {
+  setPageTitle('page.title.space.create', { space: props.space.name });
+
   if (sourceProposal.value && !sourceProposalLoaded.value)
     await loadSourceProposal();
-});
 
-onMounted(() =>
-  setPageTitle('page.title.space.create', { space: props.space.name })
-);
+  if (!sourceProposal.value) {
+    form.value.name = formDraft.value.name;
+    form.value.body = formDraft.value.body;
+    form.value.choices = formDraft.value.choices;
+  }
+
+  if (!!props.space?.template && !sourceProposal.value && !form.value.body) {
+    form.value.body = props.space.template;
+  }
+});
 </script>
 
 <template>
@@ -280,6 +301,7 @@ onMounted(() =>
       <!-- Step 1 -->
       <SpaceCreateContent
         v-if="currentStep === Step.CONTENT"
+        :space="space"
         :preview="preview"
         :body-limit="BODY_LIMIT_CHARACTERS"
       />
@@ -322,7 +344,7 @@ onMounted(() =>
             (!needsPluginConfigs && currentStep === Step.VOTING)
           "
           :disabled="!isValid"
-          :loading="isSending || queryLoading"
+          :loading="isSending || queryLoading || isSnapshotLoading"
           class="block w-full"
           primary
           @click="
@@ -336,12 +358,13 @@ onMounted(() =>
         <BaseButton
           v-else
           class="block w-full"
-          :loading="validationLoading"
+          :loading="validationLoading || isSnapshotLoading"
           :disabled="
             (!stepIsValid && !!web3Account) ||
             web3.authLoading ||
             executingValidationFailed ||
-            validationLoading
+            validationLoading ||
+            isGnosisAndNotSpaceNetwork
           "
           primary
           :data-testid="
